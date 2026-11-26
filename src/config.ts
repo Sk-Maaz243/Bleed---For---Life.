@@ -1,3 +1,4 @@
+tsx
 export const SITE_CONFIG = {
   brand: {
     bismillah: 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',
@@ -8,7 +9,7 @@ export const SITE_CONFIG = {
   },
 
   music: {
-    src: '/music.mp3',
+    src: `${import.meta.env.BASE_URL}music.mp3`,
     enablePrompt: 'Tap to enable music',
     onLabel: 'Music On',
     offLabel: 'Music Off',
@@ -40,7 +41,7 @@ export const SITE_CONFIG = {
     icsActionLabel: 'Download .ics',
     googleCalLabel: 'Google Calendar',
     threshold: 0.6,
-    brushRadius: 20, // 40px diameter
+    brushRadius: 20,
   },
 
   event: {
@@ -52,15 +53,19 @@ export const SITE_CONFIG = {
     venueName: "G. M. Momin Women's College",
     venueFullName: "K. M. E. Society's G. M. Momin Women's College",
     venueAddress: "K. M. E. Society's G. M. Momin Women's College, Thana Road, Bhiwandi",
-    // December 6, 2026, 10:30 AM IST (UTC+05:30)
+
+    // December 6, 2026, 10:30 AM IST
     targetIsoIst: '2026-12-06T10:30:00+05:30',
-    // 10:30 AM - 4:30 PM IST in UTC for calendar links
+
+    // 10:30 AM - 4:30 PM IST in UTC
     icsStartUtc: '20261206T050000Z',
     icsEndUtc: '20261206T110000Z',
     icsFilename: 'bleed-for-life-2026.ics',
+
     description: 'Bleed for Life – 15 Years of Humanity. Save 3 lives on 6 Dec.',
     notes: ['Eat light before donating.'],
     eventDayIst: '2026-12-06',
+
     venueCoords: {
       lat: 19.2945,
       lng: 73.0605,
@@ -71,6 +76,7 @@ export const SITE_CONFIG = {
   countdown: {
     heading: 'Countdown',
     completedMessage: 'Camp is Live Today',
+
     units: {
       days: 'Days',
       hours: 'Hours',
@@ -84,43 +90,68 @@ export const SITE_CONFIG = {
     heading: 'Hero Story Pass',
     subtext: 'Add your selfie & get your honour card.',
     counterSuffix: 'heroes joined',
+
     nameLabel: 'Your Name',
     namePlaceholder: 'Full name',
+
     phoneLabel: 'Phone Number',
     phonePlaceholder: 'Mobile number',
+
     photoLabel: 'Donation / Certificate Selfie',
+
     cameraButton: 'Live Camera',
     uploadButton: 'Add Photo',
     captureButton: 'Click Selfie',
     cancelCameraButton: 'Cancel',
     removePhotoButton: 'Remove',
+
     bloodGroupLabel: 'Blood Group',
-    bloodGroups: ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-', "Don't know"] as const,
+
+    bloodGroups: [
+      'A+',
+      'A-',
+      'B+',
+      'B-',
+      'O+',
+      'O-',
+      'AB+',
+      'AB-',
+      "Don't know",
+    ] as const,
+
     submitButton: 'CREATE MY HERO PASS',
     submittingButton: 'CREATING...',
+
     passTitle: 'HERO OF HUMANITY',
     passSubtitle: '15 Years of Humanity',
+
     downloadPassButton: 'Download Story Pass',
     shareStoryLabel: 'Share Story',
     storyHint: 'Download or share on your Story.',
+
     storyQuote: '“One gift of blood. A second chance at life.”',
+
     pledgeAnotherButton: 'Create Another Pass',
   },
 
   venue: {
     heading: 'Venue',
+
     mapEmbedUrl:
       "https://maps.google.com/maps?q=K.+M.+E.+Society's+G.+M.+Momin+Women's+College+Thana+Road+Bhiwandi&output=embed",
+
     directionsUrl:
       "https://www.google.com/maps/dir/?api=1&destination=K.+M.+E.+Society's+G.+M.+Momin+Women's+College+Thana+Road+Bhiwandi",
+
     directionsButton: 'GET DIRECTIONS',
     callButton: 'CALL HELPLINE',
+
     quickTruths: ['15 Mins', 'Safe', 'Age 18–65 · 50 kg+'],
   },
 
   contact: {
     /**
-     * Replace '[PHONE]' with the real helpline number (e.g. '+9198XXXXXXXX')
+     * Replace '[PHONE]' with the real helpline number.
      */
     phone: '[PHONE]',
   },
@@ -129,25 +160,35 @@ export const SITE_CONFIG = {
     eyebrow: 'A Gift Of Health',
     heading: 'Step Forward Today.',
     subtext: 'Don’t just wish for a better world — help build it.',
+
     excuseBoldLine:
       'Your good health is a gift. One donation gives someone another chance at life — and endless hope.',
+
     whatsappButton: 'INVITE A FRIEND',
     copyButton: 'COPY INVITE LINK',
     copiedButton: 'LINK COPIED',
+
     whatsappMessage:
       "Your good health is a gift — one donation gives someone another chance at life and endless hope. Join me at Bleed for Life on 6 Dec at K. M. E. Society's G. M. Momin Women's College, Bhiwandi!",
+
     urlFallback: 'https://bleedforlife.org',
   },
 
   final: {
     tapHeartHint: 'Tap the heart',
     pulseEyebrow: 'Al-Qur’an · 5:32',
-    quranQuote: '“Whoever saves one life, it is as if he had saved all of mankind.”',
+
+    quranQuote:
+      '“Whoever saves one life, it is as if he had saved all of mankind.”',
+
     cardStamp: '6 Dec 2026 · 10:30 AM · Bhiwandi',
+
     commitButton: 'I’M COMING',
     committedBadge: 'SEE YOU SUNDAY',
+
     ropeHint: 'Pull cord to close',
     closingText: 'Closing...',
+
     footer: 'Bleed for Life – 15 Years of Humanity',
   },
 } as const;
