@@ -1,4 +1,4 @@
-```ts
+
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'node:fs';
@@ -58,4 +58,3 @@ export default defineConfig(() => {
     },
   };
 });
-```
