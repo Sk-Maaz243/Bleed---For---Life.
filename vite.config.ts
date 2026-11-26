@@ -1,3 +1,4 @@
+```ts
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'node:fs';
@@ -8,14 +9,18 @@ const rootDir = import.meta.dirname;
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages repository path
     base: '/Bleed---For---Life./',
 
     plugins: [
       react(),
       tailwindcss(),
+
+      // Copy public and unbundled source assets
       {
         name: 'copy-unbundled-src-assets',
         apply: 'build',
+
         closeBundle(error?: Error): void {
           if (error) return;
 
@@ -43,7 +48,9 @@ export default defineConfig(() => {
       host: '0.0.0.0',
       port: 3000,
       strictPort: true,
+
       hmr: process.env.DISABLE_HMR !== 'true',
+
       watch:
         process.env.DISABLE_HMR === 'true'
           ? null
@@ -51,3 +58,4 @@ export default defineConfig(() => {
     },
   };
 });
+```
