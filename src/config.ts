@@ -7,12 +7,12 @@ export const SITE_CONFIG = {
     tagline: 'Your blood. Their breath.',
   },
 
-  music: {
-    src: `${import.meta.env.BASE_URL}music.mp3`,
-    enablePrompt: 'Tap to enable music',
-    onLabel: 'Music On',
-    offLabel: 'Music Off',
-  },
+ music: {
+  src: `${import.meta.env.BASE_URL}music.mp3`,
+  enablePrompt: 'Tap to enable music',
+  onLabel: 'Music On',
+  offLabel: 'Music Off',
+},
 
   open: {
     tapPrompt: 'TAP TO OPEN',
