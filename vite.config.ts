@@ -8,6 +8,8 @@ const rootDir = import.meta.dirname;
 
 export default defineConfig(() => {
   return {
+    base: '/Bleed---For---Life./',
+
     plugins: [
       react(),
       tailwindcss(),
@@ -41,9 +43,7 @@ export default defineConfig(() => {
       host: '0.0.0.0',
       port: 3000,
       strictPort: true,
-
       hmr: process.env.DISABLE_HMR !== 'true',
-
       watch:
         process.env.DISABLE_HMR === 'true'
           ? null
