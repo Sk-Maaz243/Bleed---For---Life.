@@ -7,12 +7,12 @@ export const SITE_CONFIG = {
     tagline: 'Your blood. Their breath.',
   },
 
-music: {
-  src: `${import.meta.env.BASE_URL}public/music.mp3`,
-  enablePrompt: 'Tap to enable music',
-  onLabel: 'Music On',
-  offLabel: 'Music Off',
-},
+  music: {
+    src: `${import.meta.env.BASE_URL}music.mp3`,
+    enablePrompt: 'Tap to enable music',
+    onLabel: 'Music On',
+    offLabel: 'Music Off',
+  },
 
   open: {
     tapPrompt: 'TAP TO OPEN',
@@ -53,10 +53,7 @@ music: {
     venueFullName: "K. M. E. Society's G. M. Momin Women's College",
     venueAddress: "K. M. E. Society's G. M. Momin Women's College, Thana Road, Bhiwandi",
 
-    // December 6, 2026, 10:30 AM IST
     targetIsoIst: '2026-12-06T10:30:00+05:30',
-
-    // 10:30 AM - 4:30 PM IST in UTC
     icsStartUtc: '20261206T050000Z',
     icsEndUtc: '20261206T110000Z',
     icsFilename: 'bleed-for-life-2026.ics',
@@ -149,9 +146,6 @@ music: {
   },
 
   contact: {
-    /**
-     * Replace '[PHONE]' with the real helpline number.
-     */
     phone: '[PHONE]',
   },
 
