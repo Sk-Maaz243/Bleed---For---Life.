@@ -1,4 +1,3 @@
-tsx
 export const SITE_CONFIG = {
   brand: {
     bismillah: 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',
