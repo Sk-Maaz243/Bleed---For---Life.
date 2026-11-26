@@ -22,7 +22,7 @@ export const MusicController = forwardRef<MusicControllerHandle>(
     const [isPlaying, setIsPlaying] = useState(false);
     const [needsUnlockPill, setNeedsUnlockPill] = useState(false);
 
-    // Start music
+    // Play music directly from user gesture
     const attemptSyncPlay = () => {
       const audio = audioRef.current;
 
@@ -36,25 +36,28 @@ export const MusicController = forwardRef<MusicControllerHandle>(
 
       audio.volume = 0.65;
 
-      audio.play()
-        .then(() => {
-          setIsPlaying(true);
-          setNeedsUnlockPill(false);
-          sessionStorage.setItem(SESSION_PREF_KEY, 'on');
-        })
-        .catch((error) => {
-          console.warn('Music playback blocked:', error);
-          setIsPlaying(false);
-          setNeedsUnlockPill(true);
-        });
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            setNeedsUnlockPill(false);
+            sessionStorage.setItem(SESSION_PREF_KEY, 'on');
+          })
+          .catch((error) => {
+            console.error('Music playback failed:', error);
+            setIsPlaying(false);
+            setNeedsUnlockPill(true);
+          });
+      }
     };
 
-    // Expose function to parent component
     useImperativeHandle(ref, () => ({
       playSyncFromGesture: attemptSyncPlay,
     }));
 
-    // Retry music after user interaction
+    // Retry playback after user interaction
     useEffect(() => {
       if (!needsUnlockPill) return;
 
@@ -77,7 +80,7 @@ export const MusicController = forwardRef<MusicControllerHandle>(
             sessionStorage.setItem(SESSION_PREF_KEY, 'on');
           })
           .catch((error) => {
-            console.warn('Music retry failed:', error);
+            console.error('Music retry failed:', error);
           });
       };
 
@@ -87,15 +90,11 @@ export const MusicController = forwardRef<MusicControllerHandle>(
       });
 
       return () => {
-        document.removeEventListener(
-          'pointerdown',
-          handleNextTap,
-          true
-        );
+        document.removeEventListener('pointerdown', handleNextTap, true);
       };
     }, [needsUnlockPill]);
 
-    // Music ON/OFF
+    // Music ON / OFF
     const toggleMusic = () => {
       const audio = audioRef.current;
 
@@ -119,7 +118,7 @@ export const MusicController = forwardRef<MusicControllerHandle>(
             setNeedsUnlockPill(false);
           })
           .catch((error) => {
-            console.warn('Music playback failed:', error);
+            console.error('Music toggle failed:', error);
             setIsPlaying(false);
             setNeedsUnlockPill(true);
           });
@@ -128,7 +127,6 @@ export const MusicController = forwardRef<MusicControllerHandle>(
 
     return (
       <>
-        {/* Background Music */}
         <audio
           ref={audioRef}
           src={SITE_CONFIG.music.src}
@@ -137,7 +135,6 @@ export const MusicController = forwardRef<MusicControllerHandle>(
           playsInline
         />
 
-        {/* Music Enable Prompt */}
         {needsUnlockPill && (
           <button
             type="button"
@@ -148,7 +145,6 @@ export const MusicController = forwardRef<MusicControllerHandle>(
           </button>
         )}
 
-        {/* Floating Music ON/OFF Button */}
         <button
           type="button"
           onClick={toggleMusic}
